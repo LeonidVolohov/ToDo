@@ -8,9 +8,8 @@ import com.volohov.todo.R
 import com.volohov.todo.api.ApiDataModel
 import kotlinx.android.synthetic.main.recyclerview_item.view.*
 
-class ToDoListsRecyclerAdapter(private val toDoList: MutableList<String>):
-        RecyclerView.Adapter<ToDoListsRecyclerAdapter.ToDoListsViewHolder>() {
-    //private var toDoList: MutableList<ApiDataModel.ToDoLists> = mutableListOf()
+class ToDoListsRecyclerAdapter(private val toDoList: List<ApiDataModel.ToDoLists>) :
+    RecyclerView.Adapter<ToDoListsRecyclerAdapter.ToDoListsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoListsViewHolder {
         val inflatedView = LayoutInflater.from(parent.context)
@@ -29,8 +28,9 @@ class ToDoListsRecyclerAdapter(private val toDoList: MutableList<String>):
 
     class ToDoListsViewHolder(view: View) : RecyclerView.ViewHolder(view){
         fun bindToDos(todo: ApiDataModel.ToDoLists) {
-            itemView.todo_item?.text = todo.name
+            itemView.todo_name?.text = todo.name
+            itemView.todo_is_completed?.text = todo.isCompleted.toString()
+            itemView.todo_completion_progress?.text = todo.completionProgress.toString()
         }
     }
-
 }

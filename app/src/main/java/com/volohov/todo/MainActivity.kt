@@ -1,9 +1,11 @@
 package com.volohov.todo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.volohov.todo.api.ApiUtils
 import com.volohov.todo.todolistsrecycler.ToDoListsRecyclerAdapter
 import io.reactivex.disposables.Disposable
@@ -22,17 +24,15 @@ class MainActivity : AppCompatActivity() {
                 {response ->
                     Log.d("MainActivity", response.toString())
 
-                    val items = response
-                    val itemsList: MutableList<String> = ArrayList()
-                    for(i in 0 until response.count()) {
-                        itemsList.add(response[i].name)
-                        Log.d("MainActivity", response[i].name)
-                    }
-
-                    todoListsAdapter = ToDoListsRecyclerAdapter(itemsList)
+                    todoListsAdapter = ToDoListsRecyclerAdapter(response)
+                    todo_recycler_view.layoutManager = LinearLayoutManager(this)
                     todo_recycler_view.adapter = todoListsAdapter
-
-                    Log.d("MainActivity", itemsList.toString())
+                    todo_recycler_view.addItemDecoration(
+                        DividerItemDecoration(
+                            this,
+                            LinearLayoutManager.VERTICAL
+                        )
+                    )
 
                 },
                 {failure ->
