@@ -35,10 +35,27 @@ class MainActivity : AppCompatActivity() {
                     )
 
                 },
-                {failure ->
+                { failure ->
                     Log.e("MainActivity", failure.message.toString())
                     Toast.makeText(this, failure.message.toString(), Toast.LENGTH_LONG).show()
                 }
             )
+
+
+        /*api.addToDoList(ApiDataModel.ToDoLists(true, 100.0, "testtt"))
+            .enqueue(
+                object: Callback<ApiDataModel.ToDoListsResponse> {
+                    override fun onFailure(call: Call<ApiDataModel.ToDoLists>, throwable: Throwable) {
+                        Log.e("MainActivity", throwable.message.toString())
+                        Toast.makeText(applicationContext, throwable.message.toString(), Toast.LENGTH_LONG).show()
+                    }
+                    override fun onResponse( call: Call<ApiDataModel.ToDoLists>, response: Response<ApiDataModel.ToDoLists>) {
+
+
+                    }
+                }
+            )*/
+
+
     }
 }

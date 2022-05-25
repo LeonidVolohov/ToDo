@@ -1,8 +1,8 @@
 package com.volohov.todo.api
 
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.Observable
 
 class ApiUtils {
 

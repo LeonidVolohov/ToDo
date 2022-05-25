@@ -8,4 +8,10 @@ object  ApiDataModel {
         @SerializedName("completion_progress") val completionProgress: Double,
         @SerializedName("name") val name: String
     )
+
+    data class ToDoListsResponse(
+        val code: Int,
+        val detail: String,
+        val todoList: ToDoLists
+    )
 }
